@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { colors, margins } from "../../theme/theme";
 
 const Item = styled.div`
-  margin: 0.5rem;
+  margin: ${margins.xs};
   height: 3rem;
   min-width: 2rem;
   width: 44%;
-  background: #dbe2ef;
+  background: ${colors.lightBlue};
   display: inline-block;
 `;
 

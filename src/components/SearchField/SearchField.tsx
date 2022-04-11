@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../theme/theme";
 
 const SearchFieldWrapper = styled.div`
   min-width: 2rem;
@@ -11,8 +12,12 @@ const SearchFieldWrapper = styled.div`
 const SearchInput = styled.input`
   display: none;
   height: 2rem;
-  border: 1px solid rgb(17, 45, 78);
-  border-radius: 0.25rem;
+  border: 1px solid ${colors.lightBlue};
+
+  &:focus-visible {
+    border: 1px solid ${colors.darkBlue};
+    border-radius: 0;
+  }
 
   @media (min-width: 430px) {
         display: inline-block;

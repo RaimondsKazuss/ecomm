@@ -1,10 +1,10 @@
-import Categories from "../Categories/Categories";
-import CategoryItem from "../Categories/CategoryItem";
-import Footer from "../Footer/Footer";
-import Nav from "../Nav/Nav";
-import Slider from "../Slider/Slider";
+import Categories from "../../components/Categories/Categories";
+import CategoryItem from "../../components/Categories/CategoryItem";
+import Footer from "../../components/Footer/Footer";
+import Nav from "../../components/Nav/Nav";
+import Slider from "../../components/Slider/Slider";
 
-const HomePage: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <>
       <Nav />
@@ -27,4 +27,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default Home;

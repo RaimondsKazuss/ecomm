@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import sliderImage from "../../assets/duck-1.jpeg";
+import { colors, margins, paddings } from "../../theme/theme";
 
 const SliderWrapper = styled.div`
-  padding: 0.5rem;
+  padding: ${paddings.xs};
   margin: auto;
   width: 100%;
   max-width: 64rem;
@@ -20,7 +21,7 @@ const DotWrapper = styled.div`
   height: 2rem;
   display: flex;
   width: 10rem;
-  margin: 0.5rem auto;
+  margin: ${margins.xs} auto;
   justify-content: space-between;
 `;
 
@@ -28,7 +29,7 @@ const Dot = styled.div`
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  background: #DBE2EF;
+  background: ${colors.bg};
 `;
 
 const Slider: React.FC = () => {

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import SearchField from "../SearchField/SearchField";
 import bgImage from "../../assets/logo-128.png";
+import { paddings, shadows } from "../../theme/theme";
 
 const StyledNav = styled.header`
-  border: 1px solid #ff0ff0;
+  box-shadow: ${shadows.default};
   width: 100%;
   height: 4rem;
-  padding: 0.5rem;
+  padding: ${paddings.xs};
   position: sticky;
   top: 0;
   display: flex;

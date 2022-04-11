@@ -1,6 +1,6 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
-import HomePage from "./components/HomePage/HomePage";
+import Home from "./pages/Home/Home";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,7 +17,7 @@ const App: React.FC = () => {
     <>
       <GlobalStyle />
       <div className="App">
-        <HomePage />
+        <Home />
       </div>
     </>
   );
