@@ -53,10 +53,14 @@ const UserBtn = styled(NavButton)`
   }
 `;
 
-const Nav: React.FC = () => {
+const Nav: React.FC<{toggleSideBar: () => void}> = ({toggleSideBar}) => {
+
+  const clickHandler = () => toggleSideBar()
+
   return (
     <StyledNav>
       <HomeBtn href="/" />
+      <button onClick={clickHandler}>nav</button>
       <SearchField />
       <BtnWrapper>
         <UserBtn>👤</UserBtn>

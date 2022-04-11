@@ -1,12 +1,52 @@
+import styled from "styled-components"
+import { colors, devices, shadows, zIndexes } from "../../theme/theme"
+
+const StyledSideBar = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: ${colors.lightBlue};
+    z-index: ${zIndexes.sideBar};
+    box-shadow: ${shadows.default}
+
+    ${devices.mobile} {
+        max-width: 20rem;
+    }
+`
+
+const MenuItems = styled.ul`
+    padding: 0;
+    list-style-type: none;
+`
+
+const MenuItem = styled.li`
+    width: 100%;
+    height: 2rem;
+    background: ${colors.bg};
+    border-bottom: 1px solid ${colors.lightBlue};
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        opacity: 0.6;
+        cursor: pointer;
+    }
+`
+
 const SideBar:React.FC = () => {
     return (
-        <ul>
-            <li>menu item 1</li>
-            <li>menu item 2</li>
-            <li>menu item 3</li>
-            <li>menu item 4</li>
-            <li>menu item 5</li>
-        </ul>
+        <StyledSideBar>
+        <MenuItems>
+            <MenuItem>menu item 1</MenuItem>
+            <MenuItem>menu item 1</MenuItem>
+            <MenuItem>menu item 1</MenuItem>
+            <MenuItem>menu item 1</MenuItem>
+            <MenuItem>menu item 1</MenuItem>
+        </MenuItems>
+        </StyledSideBar>
+        
     )
 }
 
