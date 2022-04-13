@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../theme/theme";
+import searchIcon from "../../assets/icon-search.svg";
 
 const SearchFieldWrapper = styled.div`
   min-width: 2rem;
@@ -20,8 +21,8 @@ const SearchInput = styled.input`
   }
 
   @media (min-width: 430px) {
-        display: inline-block;
-    }
+    display: inline-block;
+  }
 `;
 
 const SearchIcon = styled.div`
@@ -29,14 +30,15 @@ const SearchIcon = styled.div`
   height: 2rem;
   position: absolute;
   right: 0.5rem;
-  top: 0.3rem;
+  top: 0.1rem;
+  background: url(${searchIcon}) center/contain no-repeat;
 `;
 
 const SearchField: React.FC = () => {
   return (
     <SearchFieldWrapper>
       <SearchInput type="text" />
-      <SearchIcon>🔎</SearchIcon>
+      <SearchIcon />
     </SearchFieldWrapper>
   );
 };

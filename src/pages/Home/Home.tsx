@@ -17,7 +17,7 @@ const Home: React.FC = () => {
     <>
       <Nav toggleSideBar={toggleSideBar}/>
       { sideBarState && (
-          <SideBar/>
+          <SideBar toggleFn={toggleSideBar}/>
         )
       }
       <Slider />

@@ -29,9 +29,9 @@ export const shadows = {
 }
 
 export const zIndexes = {
-    base: '0',
-    sideBar: '1',
-    modal: '2'
+    base: '00',
+    sideBar: '10',
+    modal: '20'
 }
 
 export const devices = {

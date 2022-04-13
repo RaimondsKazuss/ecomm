@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { margins } from "../../theme/theme";
+import { fontSizes, margins } from "../../theme/theme";
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -7,6 +7,7 @@ const StyledFooter = styled.footer`
   position: absolute;
   bottom: 0;
   text-align: center;
+  font-size: ${fontSizes.sm}
 `;
 
 const Icons = styled.div`

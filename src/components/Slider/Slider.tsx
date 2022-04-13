@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import sliderImage from "../../assets/duck-1.jpeg";
-import { colors, margins, paddings } from "../../theme/theme";
+import { colors, fontSizes, margins, paddings } from "../../theme/theme";
 
 const SliderWrapper = styled.div`
   padding: ${paddings.xs};
@@ -11,10 +11,19 @@ const SliderWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-const Image = styled.div`
+const Banner = styled.div`
   width: 100%;
   height: 8rem;
+  text-align: center;
   background: #dbe2ef url(${sliderImage}) center/cover no-repeat;
+
+  h3 {
+    font-size: ${fontSizes.lg};
+    color: ${colors.lightBlue};
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const DotWrapper = styled.div`
@@ -35,7 +44,9 @@ const Dot = styled.div`
 const Slider: React.FC = () => {
   return (
     <SliderWrapper>
-      <Image />
+      <Banner>
+        <h3>BANNER TITLE</h3>
+      </Banner>
       <DotWrapper>
         <Dot />
         <Dot />
