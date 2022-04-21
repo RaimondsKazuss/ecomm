@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import sliderImage from "../../assets/duck-1.jpeg";
-import { colors, fontSizes, margins, paddings } from "../../theme/theme";
+import { colors, fontSizes, paddings } from "../../theme/theme";
+import arrowL from "../../assets/icon-arrow-l.svg";
+import arrowR from "../../assets/icon-arrow-r.svg";
 
 //image import for app POC demonstration purposes
 import slide1 from "../../assets/slides/slide_1.jpg";
@@ -38,19 +39,18 @@ const sliderData = [
 
 const SliderWrapper = styled.div`
   padding: ${paddings.xs};
-  margin: auto;
+  margin: 3rem auto;
   width: 100%;
   max-width: 64rem;
-  height: 11rem;
+  height: 12rem;
   box-sizing: border-box;
 `;
 
 const Banner = styled.div<{ bg: string }>`
   width: 100%;
-  height: 8rem;
+  height: 12rem;
   text-align: center;
-  background: #dbe2ef url(${sliderImage}) center/cover no-repeat;
-  background: url(${(props) => props && props.bg}) center/contain no-repeat;
+  background: url(${(props) => props && props.bg}) center/cover no-repeat;
 
   h3 {
     font-size: ${fontSizes.lg};
@@ -61,20 +61,39 @@ const Banner = styled.div<{ bg: string }>`
   }
 `;
 
-const DotWrapper = styled.div`
+const NavButton = styled.button<{ left?: boolean }>`
+  position: absolute;
+  top: 20%;
+  width: 2rem;
   height: 2rem;
-  display: flex;
-  width: 10rem;
-  margin: ${margins.xs} auto;
-  justify-content: space-between;
+  padding: ${paddings.md};
+  background: ${colors.bg} url(${arrowR}) center/30% no-repeat;
+  border-radius: 50%;
+  right: 1rem;
+  ${(props) =>
+    props &&
+    props.left &&
+    `
+    background-image: url(${arrowL});
+    left: 1rem;
+    right: unset; 
+  `}
 `;
 
-const Dot = styled.div`
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  background: ${colors.bg};
-`;
+// const DotWrapper = styled.div`
+//   height: 2rem;
+//   display: flex;
+//   width: 10rem;
+//   margin: ${margins.xs} auto;
+//   justify-content: space-between;
+// `;
+
+// const Dot = styled.div`
+//   width: 1rem;
+//   height: 1rem;
+//   border-radius: 50%;
+//   background: ${colors.bg};
+// `;
 
 const Slider: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -85,6 +104,15 @@ const Slider: React.FC = () => {
     );
   };
 
+  const nextHandler = () => {
+    setCurrentSlide(
+      currentSlide === sliderData.length - 1 ? 0 : currentSlide + 1
+    );
+  };
+
+  //TODO: slider timer function
+  // setTimeout(() => nextHandler(), 5000);
+
   return (
     <SliderWrapper>
       <Banner
@@ -93,8 +121,8 @@ const Slider: React.FC = () => {
       >
         <h3>{sliderData[currentSlide].title}</h3>
       </Banner>
-      <button onClick={prevHandler}>prev</button>
-      <button>next</button>
+      <NavButton left onClick={prevHandler} />
+      <NavButton onClick={nextHandler} />
       {/* <DotWrapper>
         <Dot />
         <Dot />
