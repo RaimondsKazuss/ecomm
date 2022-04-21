@@ -2,6 +2,40 @@ import styled from "styled-components";
 import sliderImage from "../../assets/duck-1.jpeg";
 import { colors, fontSizes, margins, paddings } from "../../theme/theme";
 
+//image import for app POC demonstration purposes
+import slide1 from "../../assets/slides/slide_1.jpg";
+import slide2 from "../../assets/slides/slide_2.jpg";
+import slide3 from "../../assets/slides/slide_3.jpg";
+import slide4 from "../../assets/slides/slide_4.jpg";
+import { useState } from "react";
+
+const sliderData = [
+  {
+    id: 1,
+    img: slide1,
+    title: "slide 1 title",
+    url: "/path1",
+  },
+  {
+    id: 2,
+    img: slide2,
+    title: "slide 2 title",
+    url: "/path2",
+  },
+  {
+    id: 3,
+    img: slide3,
+    title: "slide 3 title",
+    url: "/path3",
+  },
+  {
+    id: 4,
+    img: slide4,
+    title: "slide 4 title",
+    url: "/path4",
+  },
+];
+
 const SliderWrapper = styled.div`
   padding: ${paddings.xs};
   margin: auto;
@@ -11,11 +45,12 @@ const SliderWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-const Banner = styled.div`
+const Banner = styled.div<{ bg: string }>`
   width: 100%;
   height: 8rem;
   text-align: center;
   background: #dbe2ef url(${sliderImage}) center/cover no-repeat;
+  background: url(${(props) => props && props.bg}) center/contain no-repeat;
 
   h3 {
     font-size: ${fontSizes.lg};
@@ -42,18 +77,31 @@ const Dot = styled.div`
 `;
 
 const Slider: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const prevHandler = () => {
+    setCurrentSlide(
+      currentSlide > 0 ? currentSlide - 1 : sliderData.length - 1
+    );
+  };
+
   return (
     <SliderWrapper>
-      <Banner>
-        <h3>BANNER TITLE</h3>
+      <Banner
+        key={sliderData[currentSlide].id}
+        bg={sliderData[currentSlide].img}
+      >
+        <h3>{sliderData[currentSlide].title}</h3>
       </Banner>
-      <DotWrapper>
+      <button onClick={prevHandler}>prev</button>
+      <button>next</button>
+      {/* <DotWrapper>
         <Dot />
         <Dot />
         <Dot />
         <Dot />
         <Dot />
-      </DotWrapper>
+      </DotWrapper> */}
     </SliderWrapper>
   );
 };

@@ -7,7 +7,6 @@ import emptyBagIcon from "../../assets/icon-bag-empty.svg";
 import emptyHeartIcon from "../../assets/icon-heart-empty.svg";
 import personIcon from "../../assets/icon-person.svg";
 
-
 const StyledNav = styled.header`
   box-shadow: ${shadows.default};
   width: 100%;
@@ -26,7 +25,7 @@ const SideBarToggleBtn = styled.button`
   height: 2rem;
   margin-left: ${margins.sm};
   background: url(${menuIcon}) center/contain no-repeat;
-`
+`;
 
 const HomeBtn = styled.a`
   width: 3rem;
@@ -49,11 +48,11 @@ const BtnWrapper = styled.div`
   }
 `;
 
-const NavButton = styled.button<{icon: string}>`
+const NavButton = styled.button<{ icon: string }>`
   width: 2rem;
   height: 2rem;
   display: inline-block;
-  background: url(${props => props && props.icon}) center/contain no-repeat;
+  background: url(${(props) => props && props.icon}) center/contain no-repeat;
 `;
 
 const UserBtn = styled(NavButton)`
@@ -64,19 +63,18 @@ const UserBtn = styled(NavButton)`
   }
 `;
 
-const Nav: React.FC<{toggleSideBar: () => void}> = ({toggleSideBar}) => {
-
-  const clickHandler = () => toggleSideBar()
+const Nav: React.FC<{ toggleSideBar: () => void }> = ({ toggleSideBar }) => {
+  const clickHandler = () => toggleSideBar();
 
   return (
     <StyledNav>
       <HomeBtn href="/" />
-      <SideBarToggleBtn onClick={clickHandler}/>
+      <SideBarToggleBtn onClick={clickHandler} />
       <SearchField />
       <BtnWrapper>
-        <UserBtn icon={personIcon}/>
-        <NavButton icon={emptyHeartIcon}/>
-        <NavButton icon={emptyBagIcon}/>
+        <UserBtn icon={personIcon} />
+        <NavButton icon={emptyHeartIcon} />
+        <NavButton icon={emptyBagIcon} />
       </BtnWrapper>
     </StyledNav>
   );
