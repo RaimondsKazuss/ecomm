@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { createGlobalStyle } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import { colors, fontSizes } from "./theme/theme";
+import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
+import Nav from "./components/Nav/Nav";
+import SideBar from "./components/SideBar/SideBar";
+import Footer from "./components/Footer/Footer";
+import WishList from "./pages/WishList/WishList";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,16 +22,24 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App: React.FC = () => {
+  const [sideBarState, setSideBarState] = useState(false);
+
+  const toggleSideBar = () => {
+    setSideBarState(!sideBarState);
+  };
   return (
     <>
       <GlobalStyle />
       <BrowserRouter>
+        <Nav toggleSideBar={toggleSideBar} />
+        {sideBarState && <SideBar toggleFn={toggleSideBar} />}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<div>shopping cart</div>} />
+          <Route path="/cart" element={<ShoppingCart />} />
           <Route path="/user" element={<div>user page</div>} />
-          <Route path="/wishlist" element={<div>wishlist</div>} />
+          <Route path="/wishlist" element={<WishList />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
       <div className="App"></div>
     </>

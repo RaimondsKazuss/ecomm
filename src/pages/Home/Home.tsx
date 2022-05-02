@@ -1,9 +1,6 @@
-import { useState } from "react";
 import Categories from "../../components/Categories/Categories";
 import CategoryItem from "../../components/Categories/CategoryItem";
 import Footer from "../../components/Footer/Footer";
-import Nav from "../../components/Nav/Nav";
-import SideBar from "../../components/SideBar/SideBar";
 import Slider from "../../components/Slider/Slider";
 import iconCat from "../../assets/icon-cat.svg";
 import cat1 from "../../assets/categories/cat1.jpg";
@@ -53,16 +50,8 @@ const categoryData = [
 ];
 
 const Home: React.FC = () => {
-  const [sideBarState, setSideBarState] = useState(false);
-
-  const toggleSideBar = () => {
-    setSideBarState(!sideBarState);
-  };
-
   return (
     <>
-      <Nav toggleSideBar={toggleSideBar} />
-      {sideBarState && <SideBar toggleFn={toggleSideBar} />}
       <Slider />
       <Categories>
         {categoryData.map((category) => {
