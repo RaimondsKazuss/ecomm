@@ -21,7 +21,7 @@ const Item = styled.div<{ bg: string }>`
     background: url(${(props) => props && props.bg}) center/cover no-repeat;
     opacity: 0.2;
   }
-  
+
   &:hover {
     cursor: pointer;
   }
