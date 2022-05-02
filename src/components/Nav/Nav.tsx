@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import SearchField from "../SearchField/SearchField";
 import bgImage from "../../assets/logo-128.png";
 import { paddings, shadows, margins } from "../../theme/theme";
@@ -27,7 +29,7 @@ const SideBarToggleBtn = styled.button`
   background: url(${menuIcon}) center/contain no-repeat;
 `;
 
-const HomeBtn = styled.a`
+const HomeBtn = styled(Link)`
   width: 3rem;
   height: 3rem;
   max-width: 3rem;
@@ -48,7 +50,7 @@ const BtnWrapper = styled.div`
   }
 `;
 
-const NavButton = styled.button<{ icon: string }>`
+const NavButton = styled(Link)<{ to: string; icon: string }>`
   width: 2rem;
   height: 2rem;
   display: inline-block;
@@ -68,13 +70,13 @@ const Nav: React.FC<{ toggleSideBar: () => void }> = ({ toggleSideBar }) => {
 
   return (
     <StyledNav>
-      <HomeBtn href="/" />
+      <HomeBtn to="/" />
       <SideBarToggleBtn onClick={clickHandler} />
       <SearchField />
       <BtnWrapper>
-        <UserBtn icon={personIcon} />
-        <NavButton icon={emptyHeartIcon} />
-        <NavButton icon={emptyBagIcon} />
+        <UserBtn to="user" icon={personIcon} />
+        <NavButton to="wishlist" icon={emptyHeartIcon} />
+        <NavButton to="cart" icon={emptyBagIcon} />
       </BtnWrapper>
     </StyledNav>
   );

@@ -38,6 +38,7 @@ const sliderData = [
 ];
 
 const SliderWrapper = styled.div`
+  position: relative;
   padding: ${paddings.xs};
   margin: 3rem auto;
   width: 100%;
@@ -63,7 +64,7 @@ const Banner = styled.div<{ bg: string }>`
 
 const NavButton = styled.button<{ left?: boolean }>`
   position: absolute;
-  top: 20%;
+  top: 40%;
   width: 2rem;
   height: 2rem;
   padding: ${paddings.md};

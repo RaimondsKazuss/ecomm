@@ -1,5 +1,7 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home/Home";
 import { colors, fontSizes } from "./theme/theme";
 
@@ -18,9 +20,15 @@ const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <div className="App">
-        <Home />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<div>shopping cart</div>} />
+          <Route path="/user" element={<div>user page</div>} />
+          <Route path="/wishlist" element={<div>wishlist</div>} />
+        </Routes>
+      </BrowserRouter>
+      <div className="App"></div>
     </>
   );
 };
