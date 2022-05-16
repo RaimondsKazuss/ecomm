@@ -9,6 +9,7 @@ import Nav from "./components/Nav/Nav";
 import SideBar from "./components/SideBar/SideBar";
 import Footer from "./components/Footer/Footer";
 import WishList from "./pages/WishList/WishList";
+import Auth from "./pages/Auth/Auth";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -38,6 +39,8 @@ const App: React.FC = () => {
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="/user" element={<div>user page</div>} />
           <Route path="/wishlist" element={<WishList />} />
+          <Route path="/login" element={<Auth login />} />
+          <Route path="/signup" element={<Auth />} />
         </Routes>
         <Footer />
       </BrowserRouter>
