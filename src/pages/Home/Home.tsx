@@ -9,8 +9,7 @@ import cat3 from "../../assets/categories/cat3.jpg";
 import cat4 from "../../assets/categories/cat4.jpg";
 import cat5 from "../../assets/categories/cat5.jpg";
 import cat6 from "../../assets/categories/cat6.jpg";
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../../UserContext";
+import { useEffect, useState } from "react";
 
 const categoryData = [
   {
@@ -148,7 +147,6 @@ type dataType = typeof dataVar;
 
 const Home: React.FC = () => {
   const [categoryData, setCategoryData] = useState<{ data: dataType[] }>();
-  const { value, setValue } = useContext(UserContext);
 
   useEffect(() => {
     fetch(`http://localhost:1337/api/categories?populate=*`)
@@ -161,8 +159,6 @@ const Home: React.FC = () => {
   return (
     <>
       <Slider />
-      <div>{value}</div>
-      <button onClick={() => setValue("Other User")}>change user</button>
       {categoryData ? (
         <Categories>
           {categoryData.data.map((category) => {
