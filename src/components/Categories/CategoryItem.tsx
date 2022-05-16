@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { colors, margins, paddings } from "../../theme/theme";
+import { dataVar } from "../../pages/Home/Home";
 
-const Item = styled.div<{ bg: string }>`
+const Item = styled(Link)<{ bg: string }>`
   position: relative;
   margin: ${margins.xs};
   height: 8rem;
@@ -47,13 +49,14 @@ type categoryItemType = {
 //   text-align: center;
 //   background: url(${(props) => props && props.bg}) center/cover no-repeat;
 
-const CategoryItem: React.FC<{ category: categoryItemType }> = ({
-  category,
-}) => {
+const CategoryItem: React.FC<{ category: typeof dataVar }> = ({ category }) => {
   return (
-    <Item bg={category.bgImage}>
-      <Icon bg={category.icon} />
-      <div>{category.title}</div>
+    <Item
+      to={`category/${category.id}`}
+      bg={`http://localhost:1337${category.attributes.image.data.attributes.formats.small.url}`}
+    >
+      {/* <Icon bg={category.icon} /> */}
+      <div>{category.attributes.name}</div>
     </Item>
   );
 };
