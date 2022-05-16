@@ -52,7 +52,7 @@ type categoryItemType = {
 const CategoryItem: React.FC<{ category: typeof dataVar }> = ({ category }) => {
   return (
     <Item
-      to={`category/${category.id}`}
+      to={`categories/${category.id}`}
       bg={`http://localhost:1337${category.attributes.image.data.attributes.formats.small.url}`}
     >
       {/* <Icon bg={category.icon} /> */}

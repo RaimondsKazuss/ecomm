@@ -4,7 +4,7 @@ import UserContext from "../../UserContext";
 import { useContext } from "react";
 
 const LoginForm: React.FC = () => {
-  const { value, setValue } = useContext(UserContext);
+  const { setValue } = useContext(UserContext);
 
   const submitHandler = (values: { email: string; password: string }) => {
     console.log(values);
