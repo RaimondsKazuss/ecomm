@@ -10,9 +10,11 @@ const Item = styled(Link)<{ bg: string }>`
   min-width: 2rem;
   width: 47%;
   background: ${colors.lightBlue};
+  color: ${colors.darkBlue};
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 
   &::before {
     content: "";

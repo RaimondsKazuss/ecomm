@@ -45,7 +45,6 @@ const sliderData = [
 
 const SliderWrapper = styled.div`
   position: relative;
-  padding: ${paddings.xs};
   margin: 3rem auto;
   width: 100%;
   max-width: 64rem;
