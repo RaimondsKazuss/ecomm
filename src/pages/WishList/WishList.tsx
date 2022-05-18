@@ -10,11 +10,6 @@ const WishList: React.FC = () => {
     <>
       <ProductList>
         <div>{value}</div>
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
       </ProductList>
     </>
   );

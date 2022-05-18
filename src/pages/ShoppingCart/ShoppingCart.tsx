@@ -6,11 +6,6 @@ const ShoppingCart: React.FC = () => {
   return (
     <>
       <ProductList>
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
         <SubmitButton title="checkout" />
       </ProductList>
     </>

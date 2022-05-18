@@ -1,80 +1,82 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { default as ProductWrapper } from "../Categories/Categories";
-import CartContext from "../../CartContext";
+import { default as ProductWrapper } from "../../components/Categories/Categories";
+import ProductList from "../../components/ProductList/ProductList";
+import Product from "../../components/Product/Product";
+import Loader from "../../components/Loader/Loader";
 
-const productDataExample = {
-  id: 3,
+const categoryDataExample = {
+  id: 2,
   attributes: {
-    name: " category three",
-    createdAt: "2022-05-11T15:22:31.464Z",
-    updatedAt: "2022-05-11T15:30:31.879Z",
-    publishedAt: "2022-05-11T15:24:21.252Z",
+    name: "category two",
+    createdAt: "2022-05-09T16:08:44.459Z",
+    updatedAt: "2022-05-11T15:30:16.915Z",
+    publishedAt: "2022-05-09T16:14:30.871Z",
     image: {
       data: {
-        id: 1,
+        id: 3,
         attributes: {
-          name: "cat3.jpg",
-          alternativeText: "cat3.jpg",
-          caption: "cat3.jpg",
+          name: "cat2.jpg",
+          alternativeText: "cat2.jpg",
+          caption: "cat2.jpg",
           width: 3712,
           height: 5568,
           formats: {
             thumbnail: {
-              name: "thumbnail_cat3.jpg",
-              hash: "thumbnail_cat3_c7c3930e3d",
+              name: "thumbnail_cat2.jpg",
+              hash: "thumbnail_cat2_4c719b9bbe",
               ext: ".jpg",
               mime: "image/jpeg",
               path: null,
               width: 104,
               height: 156,
-              size: 3.95,
-              url: "/uploads/thumbnail_cat3_c7c3930e3d.jpg",
+              size: 3.36,
+              url: "/uploads/thumbnail_cat2_4c719b9bbe.jpg",
             },
             large: {
-              name: "large_cat3.jpg",
-              hash: "large_cat3_c7c3930e3d",
+              name: "large_cat2.jpg",
+              hash: "large_cat2_4c719b9bbe",
               ext: ".jpg",
               mime: "image/jpeg",
               path: null,
               width: 667,
               height: 1000,
-              size: 90.28,
-              url: "/uploads/large_cat3_c7c3930e3d.jpg",
+              size: 69.36,
+              url: "/uploads/large_cat2_4c719b9bbe.jpg",
             },
             medium: {
-              name: "medium_cat3.jpg",
-              hash: "medium_cat3_c7c3930e3d",
+              name: "medium_cat2.jpg",
+              hash: "medium_cat2_4c719b9bbe",
               ext: ".jpg",
               mime: "image/jpeg",
               path: null,
               width: 500,
               height: 750,
-              size: 57.32,
-              url: "/uploads/medium_cat3_c7c3930e3d.jpg",
+              size: 41.58,
+              url: "/uploads/medium_cat2_4c719b9bbe.jpg",
             },
             small: {
-              name: "small_cat3.jpg",
-              hash: "small_cat3_c7c3930e3d",
+              name: "small_cat2.jpg",
+              hash: "small_cat2_4c719b9bbe",
               ext: ".jpg",
               mime: "image/jpeg",
               path: null,
               width: 333,
               height: 500,
-              size: 28.87,
-              url: "/uploads/small_cat3_c7c3930e3d.jpg",
+              size: 20.45,
+              url: "/uploads/small_cat2_4c719b9bbe.jpg",
             },
           },
-          hash: "cat3_c7c3930e3d",
+          hash: "cat2_4c719b9bbe",
           ext: ".jpg",
           mime: "image/jpeg",
-          size: 1947.82,
-          url: "/uploads/cat3_c7c3930e3d.jpg",
+          size: 2456.96,
+          url: "/uploads/cat2_4c719b9bbe.jpg",
           previewUrl: null,
           provider: "local",
           provider_metadata: null,
-          createdAt: "2022-05-09T16:36:36.434Z",
-          updatedAt: "2022-05-09T16:36:36.434Z",
+          createdAt: "2022-05-09T16:36:36.652Z",
+          updatedAt: "2022-05-09T16:36:36.652Z",
         },
       },
     },
@@ -118,16 +120,12 @@ const productDataExample = {
   },
   meta: {},
 };
-type productType = typeof productDataExample;
+
+export type dataType = typeof categoryDataExample;
 
 const CategoryPage: React.FC = () => {
-  const [productData, setProductData] = useState<{ data: productType }>();
-  const { setCartValue } = useContext(CartContext);
+  const [productData, setProductData] = useState<{ data: dataType }>();
   const { id } = useParams();
-
-  const clickHandler = (id: number) => {
-    setCartValue(id);
-  };
 
   useEffect(() => {
     fetch(`http://localhost:1337/api/categories/${id}?populate=*`)
@@ -139,17 +137,15 @@ const CategoryPage: React.FC = () => {
 
   return (
     <ProductWrapper>
-      {productData ? (
-        productData.data.attributes.products.data.map((product) => {
-          return (
-            <div onClick={() => clickHandler(product.id)} key={product.id}>
-              {product.attributes.name}
-            </div>
-          );
-        })
-      ) : (
-        <div>loading ...</div>
-      )}
+      <ProductList>
+        {productData ? (
+          productData.data.attributes.products.data.map((product) => {
+            return <Product product={product} key={product.id} />;
+          })
+        ) : (
+          <Loader />
+        )}
+      </ProductList>
     </ProductWrapper>
   );
 };

@@ -11,7 +11,7 @@ import Footer from "./components/Footer/Footer";
 import WishList from "./pages/WishList/WishList";
 import Auth from "./pages/Auth/Auth";
 import UserContext from "./UserContext";
-import CategoryPage from "./components/CategoryPage/CategoryPage";
+import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import CartContext from "./CartContext";
 
 const GlobalStyle = createGlobalStyle`
@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
 const App: React.FC = () => {
   const [sideBarState, setSideBarState] = useState(false);
   const [value, setValue] = useState("");
-  const [cartValue, setCartValue] = useState(0);
+  const [cartValue, setCartValue] = useState("");
 
   const toggleSideBar = () => {
     setSideBarState(!sideBarState);

@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 type CartContextType = {
-    cartValue: number | null,
-    setCartValue: (id: number) => void
+    cartValue: string | null,
+    setCartValue: (id: string) => void
 }
 
 const CartContext = createContext<CartContextType>({
