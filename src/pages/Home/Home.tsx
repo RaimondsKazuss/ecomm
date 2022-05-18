@@ -2,8 +2,8 @@ import Categories from "../../components/Categories/Categories";
 import CategoryItem from "../../components/Categories/CategoryItem";
 import Footer from "../../components/Footer/Footer";
 import Slider from "../../components/Slider/Slider";
-import iconCat from "../../assets/icon-cat.svg";
 import { useEffect, useState } from "react";
+import Loader from "../../components/Loader/Loader";
 
 export const dataVar = {
   id: 1,
@@ -121,7 +121,9 @@ const Home: React.FC = () => {
           })}
         </Categories>
       ) : (
-        <div>loading ...</div>
+        <Categories>
+          <Loader />
+        </Categories>
       )}
       <Footer />
     </>
