@@ -35,7 +35,8 @@ const Product: React.FC<{ product: productDataType }> = ({ product }) => {
   const { cartValue, setCartValue } = useContext(CartContext);
 
   const clickHandler = (product: productDataType) => {
-    setCartValue([...cartValue, product]);
+    !cartValue.find((item) => item.id === product.id) &&
+      setCartValue([...cartValue, product]);
     //TODO: navigate to product/:id page
   };
   return (
