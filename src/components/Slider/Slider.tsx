@@ -1,39 +1,45 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { colors, fontSizes, paddings } from "../../theme/theme";
 import arrowL from "../../assets/icon-arrow-l.svg";
 import arrowR from "../../assets/icon-arrow-r.svg";
 
-//image import for app POC demonstration purposes
-import slide1 from "../../assets/slides/slide_1.jpg";
-import slide2 from "../../assets/slides/slide_2.jpg";
-import slide3 from "../../assets/slides/slide_3.jpg";
-import slide4 from "../../assets/slides/slide_4.jpg";
-import { useState } from "react";
-
 const sliderData = [
   {
     id: 1,
-    img: slide1,
+    img: "http://localhost:1337/uploads/pexels_pixabay_235621_4822e7ac62.jpg",
     title: "slide 1 title",
-    url: "/path1",
+    url: "/slide1",
   },
   {
     id: 2,
-    img: slide2,
+    img: "http://localhost:1337/uploads/pexels_eberhard_grossgasteiger_1287145_e1cb80f8af.jpg",
     title: "slide 2 title",
-    url: "/path2",
+    url: "/slide2",
   },
   {
     id: 3,
-    img: slide3,
+    img: "http://localhost:1337/uploads/pexels_eberhard_grossgasteiger_572897_a84884a931.jpg",
     title: "slide 3 title",
-    url: "/path3",
+    url: "/slide3",
   },
   {
     id: 4,
-    img: slide4,
+    img: "http://localhost:1337/uploads/pexels_andy_vu_3484061_03be16c1fc.jpg",
     title: "slide 4 title",
     url: "/path4",
+  },
+  {
+    id: 5,
+    img: "http://localhost:1337/uploads/pexels_eberhard_grossgasteiger_691668_aeb1030a36.jpg",
+    title: "slide 5 title",
+    url: "/slide5",
+  },
+  {
+    id: 4,
+    img: "http://localhost:1337/uploads/pexels_lumn_167699_4f1843e170.jpg",
+    title: "slide 6 title",
+    url: "/slide6",
   },
 ];
 
@@ -55,10 +61,10 @@ const Banner = styled.div<{ bg: string }>`
 
   h3 {
     font-size: ${fontSizes.lg};
-    color: ${colors.lightBlue};
+    color: ${colors.bg};
     font-weight: 700;
     margin: 0;
-    padding: 0;
+    padding: 5rem 0;
   }
 `;
 
