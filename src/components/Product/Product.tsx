@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import CartContext from "../../CartContext";
 // import { productType } from "../../pages/CategoryPage/CategoryPage";
@@ -33,18 +34,25 @@ export type productDataType = {
 
 const Product: React.FC<{ product: productDataType }> = ({ product }) => {
   const { cartValue, setCartValue } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  const clickHandler = (product: productDataType) => {
+  const addToCart = (product: productDataType) => {
     !cartValue.find((item) => item.id === product.id) &&
       setCartValue([...cartValue, product]);
-    //TODO: navigate to product/:id page
+  };
+
+  const viewProduct = (product: productDataType) => {
+    navigate(`/products/${product.id}`, { replace: true });
   };
   return (
     <StyledProduct>
       <ProductImage />
       <p>{product.attributes.name}</p>
-      <button type="button" onClick={() => clickHandler(product)}>
+      <button type="button" onClick={() => addToCart(product)}>
         add to cart
+      </button>
+      <button type="button" onClick={() => viewProduct(product)}>
+        view product
       </button>
     </StyledProduct>
   );

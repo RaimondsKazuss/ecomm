@@ -13,6 +13,7 @@ import Auth from "./pages/Auth/Auth";
 import UserContext from "./UserContext";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import CartContext from "./CartContext";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -55,6 +56,7 @@ const App: React.FC = () => {
               <Route path="/login" element={<Auth login />} />
               <Route path="/signup" element={<Auth />} />
               <Route path="categories/:id" element={<CategoryPage />} />
+              <Route path="products/:id" element={<ProductPage />} />
             </Routes>
             <Footer />
           </BrowserRouter>
