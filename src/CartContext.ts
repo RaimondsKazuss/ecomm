@@ -3,13 +3,13 @@ import { productDataType } from "./components/Product/Product";
 
 
 type CartContextType = {
-    cartValue: productDataType | null,
-    setCartValue: (product: productDataType) => void
+    cartValue: productDataType[] | [],
+    setCartValue: (product: any) => void
 }
 
 const CartContext = createContext<CartContextType>({
-    cartValue: null,
-    setCartValue: () => {}
+    cartValue: [],
+    setCartValue: () => []
 })
 
 export default CartContext

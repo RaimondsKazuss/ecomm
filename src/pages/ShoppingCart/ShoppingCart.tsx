@@ -8,12 +8,13 @@ const ShoppingCart: React.FC = () => {
   const { cartValue } = useContext(CartContext);
 
   return (
-    <>
-      <ProductList>
-        <SubmitButton title="checkout" />
-        {cartValue && <Product product={cartValue} />}
-      </ProductList>
-    </>
+    <ProductList>
+      <SubmitButton title="checkout" />
+      {cartValue &&
+        cartValue.map((product) => {
+          return <Product key={product.id} product={product} />;
+        })}
+    </ProductList>
   );
 };
 

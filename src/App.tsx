@@ -32,16 +32,7 @@ const GlobalStyle = createGlobalStyle`
 const App: React.FC = () => {
   const [sideBarState, setSideBarState] = useState(false);
   const [value, setValue] = useState("");
-  const [cartValue, setCartValue] = useState({
-    id: 0,
-    attributes: {
-      name: "",
-      description: "",
-      createdAt: "",
-      updatedAt: "",
-      publishedAt: "",
-    }
-  });
+  const [cartValue, setCartValue] = useState([]);
 
   const toggleSideBar = () => {
     setSideBarState(!sideBarState);

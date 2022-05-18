@@ -32,10 +32,10 @@ export type productDataType = {
 };
 
 const Product: React.FC<{ product: productDataType }> = ({ product }) => {
-  const { setCartValue } = useContext(CartContext);
+  const { cartValue, setCartValue } = useContext(CartContext);
 
   const clickHandler = (product: productDataType) => {
-    setCartValue(product);
+    setCartValue([...cartValue, product]);
     //TODO: navigate to product/:id page
   };
   return (
