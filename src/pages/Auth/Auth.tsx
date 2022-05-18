@@ -9,7 +9,11 @@ import SignUpForm from "../../components/SignUpForm/SignUpForm";
 const Auth: React.FC<{ login?: boolean }> = ({ login }) => {
   if (login) return <LoginForm />;
 
-  return <SignUpForm />;
+  return (
+    <>
+      <SignUpForm />
+    </>
+  );
 };
 
 export default Auth;
