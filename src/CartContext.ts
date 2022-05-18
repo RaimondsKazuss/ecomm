@@ -1,8 +1,10 @@
 import { createContext } from "react";
+import { productDataType } from "./components/Product/Product";
+
 
 type CartContextType = {
-    cartValue: string | null,
-    setCartValue: (id: string) => void
+    cartValue: productDataType | null,
+    setCartValue: (product: productDataType) => void
 }
 
 const CartContext = createContext<CartContextType>({

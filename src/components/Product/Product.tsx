@@ -20,31 +20,31 @@ const ProductImage = styled.div`
   background: ${colors.lightBlue};
 `;
 
-const productDataExample = {
-  id: 9,
+export type productDataType = {
+  id: number;
   attributes: {
-    name: "product 8",
-    description:
-      "Chislic buffalo porchetta ham, venison ham hock hamburger doner. Alcatra ribeye corned beef pork chicken drumstick spare ribs swine filet mignon t-bone pancetta strip steak burgdoggen capicola.",
-    createdAt: "2022-05-16T13:54:27.878Z",
-    updatedAt: "2022-05-16T14:11:36.637Z",
-    publishedAt: "2022-05-16T14:08:14.270Z",
-  },
+    name: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
 };
-
-type productDataType = typeof productDataExample;
 
 const Product: React.FC<{ product: productDataType }> = ({ product }) => {
   const { setCartValue } = useContext(CartContext);
 
-  const clickHandler = (name: string) => {
-    setCartValue(name);
-    //navigate to product/:id page
+  const clickHandler = (product: productDataType) => {
+    setCartValue(product);
+    //TODO: navigate to product/:id page
   };
   return (
-    <StyledProduct onClick={() => clickHandler(product.attributes.name)}>
+    <StyledProduct>
       <ProductImage />
       <p>{product.attributes.name}</p>
+      <button type="button" onClick={() => clickHandler(product)}>
+        add to cart
+      </button>
     </StyledProduct>
   );
 };
